@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Agricultural Green Theme */
+    --background: 50 20% 98%;
+    --foreground: 120 25% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 120 25% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 120 25% 8%;
+
+    /* Primary: Deep Agricultural Green */
+    --primary: 122 57% 20%;
+    --primary-foreground: 120 20% 98%;
+    --primary-hover: 122 57% 25%;
+    
+    /* Secondary: Professional Blue */
+    --secondary: 210 85% 32%;
+    --secondary-foreground: 210 20% 98%;
+    --secondary-hover: 210 85% 40%;
+
+    /* Earth Tones */
+    --muted: 45 25% 92%;
+    --muted-foreground: 120 15% 40%;
+
+    --accent: 35 85% 85%;
+    --accent-foreground: 120 25% 8%;
+
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 142 20% 98%;
+    
+    --warning: 45 93% 47%;
+    --warning-foreground: 45 15% 8%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 20% 98%;
+
+    --border: 120 15% 88%;
+    --input: 120 15% 94%;
+    --ring: 122 57% 20%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Agricultural Theme */
+    --background: 120 15% 6%;
+    --foreground: 120 20% 92%;
+
+    --card: 120 12% 8%;
+    --card-foreground: 120 20% 92%;
+
+    --popover: 120 12% 8%;
+    --popover-foreground: 120 20% 92%;
+
+    /* Primary: Bright Agricultural Green */
+    --primary: 122 45% 35%;
+    --primary-foreground: 120 20% 98%;
+    --primary-hover: 122 45% 42%;
+
+    /* Secondary: Bright Professional Blue */
+    --secondary: 210 70% 45%;
+    --secondary-foreground: 210 20% 98%;
+    --secondary-hover: 210 70% 52%;
+
+    --muted: 120 8% 12%;
+    --muted-foreground: 120 15% 65%;
+
+    --accent: 120 8% 15%;
+    --accent-foreground: 120 20% 92%;
+
+    /* Status Colors for Dark */
+    --success: 142 65% 42%;
+    --success-foreground: 142 20% 98%;
+    
+    --warning: 45 85% 55%;
+    --warning-foreground: 45 15% 8%;
+    
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 20% 98%;
+
+    --border: 120 8% 18%;
+    --input: 120 8% 15%;
+    --ring: 122 45% 35%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Noto Sans', 'Noto Sans Malayalam', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Agricultural gradients */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-hover)));
+  }
+  
+  .gradient-secondary {
+    background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-hover)));
+  }
+  
+  .gradient-success {
+    background: linear-gradient(135deg, hsl(var(--success)), hsl(142 76% 42%));
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Agricultural shadows */
+  .shadow-agricultural {
+    box-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.2);
+  }
+  
+  .shadow-agricultural-lg {
+    box-shadow: 0 8px 40px -8px hsl(var(--primary) / 0.3);
+  }
+}
+
+@layer components {
+  /* Chat bubble styles */
+  .chat-bubble-user {
+    @apply bg-primary text-primary-foreground rounded-2xl rounded-br-md;
+  }
+  
+  .chat-bubble-bot {
+    @apply bg-muted text-foreground rounded-2xl rounded-bl-md;
+  }
+
+  /* Agricultural card styles */
+  .agricultural-card {
+    @apply bg-card border border-border rounded-xl p-6 shadow-agricultural transition-smooth hover:shadow-agricultural-lg;
+  }
+
+  /* Hero section styling */
+  .hero-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--primary) / 0.95) 0%, 
+      hsl(var(--secondary) / 0.90) 50%, 
+      hsl(var(--success) / 0.85) 100%);
+  }
+
+  /* Mobile-first responsive utilities */
+  .container-mobile {
+    @apply w-full max-w-sm mx-auto px-4;
+  }
+  
+  .container-tablet {
+    @apply w-full max-w-2xl mx-auto px-6;
+  }
+  
+  .container-desktop {
+    @apply w-full max-w-6xl mx-auto px-8;
+  }
+}
